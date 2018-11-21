@@ -41,7 +41,7 @@
 			rs.next();
 			// 检查密码
 			if(rs.getString(1).equals(spswd)){
-				response.sendRedirect("GoodList.jsp?us="suser);
+				response.sendRedirect("GoodList.jsp?us="+suser);
 			}
 			else{
 				out.print("<h1>登陆失败</h1>");

@@ -60,6 +60,8 @@
 								"</td><td><a href=\"addOrder.jsp?gid="+i+"us="+us+"\">订购</a></td></tr>";
 						out.print(output);
 					}
+					rs.close();
+					conn.close();
 				}	
 				catch(Exception e){
 					e.printStackTrace();
