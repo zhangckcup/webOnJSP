@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://urp.cup.edu.cn/login -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://urp.cup.edu.cn/img/icon/favicon.ico" type="image/x-icon">
+
+    
+    <link href="./login.css" rel="stylesheet">
+	<style type="text/css">
+		.breathe-btn {
+            position: relative;
+            width: 10px;
+            height: 10px;
+            margin: 40px auto;
+            line-height: 40px;
+            border: 1px solid #2b92d4;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 20px;
+            text-align: center;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+            overflow: hidden;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#6cc3fe), to(#21a1d0));
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-name: breathe;
+            -webkit-animation-duration: 800ms;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-direction: alternate;
+        }
+	</style>
+    <script>
+        if (window != top) {
+            top.location.href = "/login?errorCode=invalidSession";
+        }
+        
+        function toModifyPwd() {
+        	$("input[name=username]").val($("input[name=j_username]").val());
+        	var form = $("#to_modify_pwd")[0];
+        	form.action = "/forgetPassword/inputLoginID";
+        	form.method = "post";
+        	form.submit();
+        }
+        
+        //格式化倒计时
+		function formatCountDown(time) {
+			var hours = Math.floor(time / 3600);
+			var minutes = Math.floor(time % 3600 / 60);
+			var seconds = Math.floor(time % 3600 % 60);
+			var currentCountDown = "";
+			if (hours > 0) currentCountDown += hours + " 时 ";
+			if (minutes > 0) currentCountDown += minutes + " 分 ";
+			if (seconds >= 0) currentCountDown += seconds + " 秒";
+			return currentCountDown;
+        }
+    </script>
+</head>
+<body style="background-color: #56baed;">
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active"> 欢迎加入我们 </h2>
+        <div style="font-size: 1.5em;">注  册</div>
+        <!-- Login Form -->
+        <form action="signup.jsp" method="post">
+	        <input id="remainingTime" type="hidden" value="">
+            <input type="text" id="input_username" name="j_username" class="fadeIn second" maxlength="50" placeholder="学号">
+            <input type="password" id="input_password" class="fadeIn third" name="j_password" maxlength="50" placeholder="密码">    
+            <input type="submit" id="loginButton" class="fadeIn fourth" value="注册">
+        </form>
+        <form id="to_modify_pwd">
+        	<input type="hidden" name="username">
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function refreshCaptcha() {
+        $('#captchaImg').hide().attr('src', '/img/captcha.jpg?' + Math.floor(Math.random() * 100)).fadeIn();
+    }
+
+    window.onload = function () {
+        var t = document.getElementById('input_username');
+        t.focus();
+
+        //锁定后禁用登录按钮
+        var $time = $('#remainingTime').val();
+        if ($time != undefined && $time > 0) {
+            $('#loginButton').attr('disabled', "true");
+
+            //时间跳变
+            window.setInterval(function () {
+                $time -= 1;
+                $('#countdown').html(formatCountDown($time));
+                if ($time == 0) {
+                    $('#closeCountDownInfoDiv').css({display: 'none'});
+                }
+            }, 1000);
+
+            //启用登录按钮
+            window.setTimeout(function () {
+                $('#loginButton').removeAttr('disabled');
+            }, $('#remainingTime').val() * 1000);
+        }
+    };
+</script>
+
+</body></html>
