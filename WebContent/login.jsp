@@ -24,7 +24,7 @@
 			"jdbc:sqlserver://localhost:1433;DatabaseName=DB1","sa","123456");
 
 		if(suser.equals("root")){
-			// 如果为root 用户则进入后台
+			// 如果为root 则进入后台
 			response.sendRedirect("background.html");
 		}
 			
@@ -41,7 +41,7 @@
 			rs.next();
 			// 检查密码
 			if(rs.getString(1).equals(spswd)){
-				response.sendRedirect("GoodList.html");
+				response.sendRedirect("GoodList.jsp?us="suser);
 			}
 			else{
 				out.print("<h1>登陆失败</h1>");

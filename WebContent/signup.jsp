@@ -8,6 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="refresh" content="5;url=index.html"> 
 <title>TEST.JSP</title>
+<style type="text/css">
+	h1{
+		margin: 0 auto;
+	}
+</style>
 </head>
 <body>
 <%
