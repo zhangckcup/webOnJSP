@@ -32,7 +32,7 @@ if(us==null || us.isEmpty()|| us.equals("null")){
 }
 %>
 <ul class="nav">
-		<li><a href="GoodList.jsp">欢迎！ </a></li> <li><a href="home.jsp?us=<%=us %>"><%=us %></a></li>
+		<li><a href="GoodList.jsp?us=<%=us %>">欢迎！ </a></li> <li><a href="home.jsp?us=<%=us %>"><%=us %></a></li>
 </ul>
 <%
 try{
@@ -56,11 +56,11 @@ try{
 			output = "<tr><td>"+rs.getString(1)+"</td><td>"+rs.getFloat(2)+"</td><td>"+rs.getInt(3)+
 				"</td><td>"+"<input type=\"text\" name=\"num\" value=\""+rs.getInt(3)+"\" />"+
 				"<input type=\"hidden\" name=\"oid\" value=\""+rs.getInt(4)+"\" />"+
-				"<a href=\"delOrder.jsp?oid="+rs.getInt(4)+"\">删除</a>"+
+				"<a href=\"delOrder2.jsp?oid="+rs.getInt(4)+"\">删除</a>"+
 				"</td></tr>";
 			out.print(output);
 		}
-		out.print("</table><input class=\"right\" type=\"submit\" value=\"提交\" /></form>");
+		out.print("</table><input type=\"hidden\" name=\"us\" value=\""+us+"\"><input class=\"right\" type=\"submit\" value=\"提交\" /></form>");
 	}
 	rs.close();
 	conn.close();

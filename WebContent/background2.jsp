@@ -27,25 +27,20 @@
 	<!-- 完成进货与发货 -->
 	<h1><a href="background.jsp">商品管理界面</a></h1> 
 	<h1><a href="background2.jsp">订单管理界面</a></h1>
-	<h1><a href="index.html">登陆界面</a></h1>
-	<h1><a href="GoodList.jsp">商品列表界面</a></h1>
-	<h1>商品管理</h1><br>
-	<form action="upGood.jsp" method="post">
+	<h1>订单管理</h1><br>
 	<table>
-		<tr><th>商品编号</th><th>商品名</th><th>价格</th><th>进货数量</th><th>下架商品</th></tr>
+		<tr><th>订单编号</th><th>用户名</th><th>商品编号</th><th>订购数量</th><th>确认交货</th></tr>
 	<%
 	try{
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		Connection conn = DriverManager.getConnection(
 			"jdbc:sqlserver://localhost:1433;DatabaseName=DB1","sa","123456");
 		Statement st = conn.createStatement();
-		ResultSet rsGoods = st.executeQuery("select * from goods");
+		ResultSet rs = st.executeQuery("select * from orders");
 		String temp;
-		while(rsGoods.next()){
-			temp = "<tr><td>"+rsGoods.getInt(1)+"<input type=\"hidden\" name=\"gid\" value=\""+rsGoods.getInt(1)+"\"/></td>"+
-				"<td>"+rsGoods.getString(2)+"</td>"+
-				"<td><input type=\"text\" name=\"gprc\" value=\""+rsGoods.getFloat(3)+"\"/></td>"+
-				"<td><input type=\"text\" name=\"gadd\" value=\"0\"/></td><td><a href=\"delGood.jsp?gid="+rsGoods.getInt(1)+"\">下架</a></td></tr>";
+		while(rs.next()){
+			temp = "<tr><td>"+rs.getInt(1)+"</td><td>"+rs.getString(2)+"</td><td>"+rs.getInt(3)+"</td>"+
+				"<td>"+rs.getInt(4)+"</td><td><a href=\"delOrder.jsp?oid="+rs.getInt(1)+"\">交货</a></td></tr>";
 			out.print(temp);
 		}
 	}
@@ -54,8 +49,5 @@
 	}
 	%>
 	</table>
-	<input type="submit" value="确认更改"/>
-</form>
-<a href="addGood.html">增加商品</a>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="1;url=background2.jsp">
+<meta http-equiv="refresh" content="1;url=home.jsp">
 <title>delOrder</title>
 </head>
 <body>

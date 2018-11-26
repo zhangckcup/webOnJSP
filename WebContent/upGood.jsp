@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="refresh" content="3;url=background.jsp">
 <title>upGood.jsp</title>
 </head>
 <body>
@@ -23,14 +25,12 @@ try{
 		}
 		st.executeUpdate("update goods set price="+gprc[i]+",stock=stock+"+gadd[i]+" where gid="+gid[i]);
 	}
-	
+	out.print("<h1>提交成功，3秒后回到后台界面</h1>");
 	conn.close();
-	response.sendRedirect("background.jsp");
 }
 catch(Exception e){
 	e.getStackTrace();
 }
-
 %>
 </body>
 </html>

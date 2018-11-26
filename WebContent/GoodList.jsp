@@ -73,7 +73,7 @@
 			<input type="submit" value="Go" />
 		</form>
 		<div>
-			<a href="GoodList.jsp?pg=1">1</a>  <a href="GoodList.jsp?pg=2">2</a>
+		<a href="GoodList.jsp?pg=1&us=<%=us %>">1</a><a href="GoodList.jsp?pg=2&us=<%=us %>">2</a>
 		</div>
 	</body>
 </html>
