@@ -23,9 +23,9 @@
 		Connection conn = DriverManager.getConnection(
 			"jdbc:sqlserver://localhost:1433;DatabaseName=DB1","sa","123456");
 
-		if(suser.equals("root")){
+		if(suser.equals("root") && spswd.equals("123456")){
 			// 如果为root 则进入后台
-			response.sendRedirect("background.html");
+			response.sendRedirect("background.jsp");
 		}
 			
 		Statement st = conn.createStatement();

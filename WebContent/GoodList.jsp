@@ -22,7 +22,7 @@
 	<body>
 		<h1>商品列表</h1>
 		<ul class="nav">
-				<li><a href="#">欢迎！ </a></li> <li><a href="home.jsp?us=<%=us %>"><%=us %></a></li>
+				<li><a href="GoodList.jsp">欢迎！ </a></li> <li><a href="home.jsp?us=<%=us %>"><%=us %></a></li>
 		</ul>
 		<form action="GoodList.jsp" method="post" style="margin: 8px auto;">
 			<input type="text" name="gname" />
@@ -57,7 +57,7 @@
 					ResultSet rs = st.executeQuery(cmd);
 					for(int i=1+10*(pg-1);(i < 10*pg) && rs.next(); i++){
 						output = "<tr><td>"+rs.getString(2)+"</td><td>"+rs.getString(3)+"</td><td>"+rs.getString(4)+
-								"</td><td><a href=\"addOrder.jsp?gid="+i+"us="+us+"\">订购</a></td></tr>";
+								"</td><td><a href=\"addOrder.jsp?gid="+i+"&us="+us+"\">订购</a></td></tr>";
 						out.print(output);
 					}
 					rs.close();
