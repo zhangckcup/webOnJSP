@@ -15,8 +15,9 @@ try{
 	Connection conn = DriverManager.getConnection(
 		"jdbc:sqlserver://localhost:1433;DatabaseName=DB1","sa","123456");
 	Statement st = conn.createStatement();
-	st.executeUpdate("delete from goods where goodId="+gid);
+	st.executeUpdate("delete from goods where goodsId="+gid);
 	conn.close();
+	response.sendRedirect("background.jsp");
 }
 catch(Exception e){
 	e.getStackTrace();

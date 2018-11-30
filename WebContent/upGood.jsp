@@ -23,10 +23,11 @@ try{
 		if(Float.parseFloat(gprc[i])<=0){
 			gprc[i]="-1";
 		}
-		st.executeUpdate("update goods set price="+gprc[i]+",stock=stock+"+gadd[i]+" where gid="+gid[i]);
+		st.executeUpdate("update goods set price="+gprc[i]+",stock=stock+"+gadd[i]+" where goodsId="+gid[i]);
 	}
-	out.print("<h1>提交成功，3秒后回到后台界面</h1>");
+	out.print("<h1>提交成功，马上回到后台界面</h1>");
 	conn.close();
+	response.sendRedirect("background.jsp");
 }
 catch(Exception e){
 	e.getStackTrace();

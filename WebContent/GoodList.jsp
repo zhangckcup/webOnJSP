@@ -27,6 +27,7 @@
 		<form action="GoodList.jsp" method="post" style="margin: 8px auto;">
 			<input type="text" name="gname" />
 			<input type="submit" class="" value="搜索"/>
+			<input type="hidden" name="us" value="<%=us %>"/> 
 		</form>
 			
 		<table>

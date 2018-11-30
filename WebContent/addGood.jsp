@@ -8,7 +8,6 @@
 <title>addGood Page</title>
 </head>
 <body>
-<h1><a href="background.jsp">回到后台页面</a></h1>
 <%
 String gname = request.getParameter("gname");
 String gprc = request.getParameter("gprc");
@@ -30,13 +29,14 @@ try{
 		out.print("<h1>不合法参数，稍后返回原界面</h1>");
 	}
 	else{
-		cmd = "insert goods value ("+gid+","+gname+","+gprc+","+gsto+")";
+		cmd = "insert goods values ("+gid+",'"+gname+"',"+gprc+","+gsto+")";
 		st.executeUpdate(cmd);
 		out.print("<h1>添加成功，稍后返回原界面</h1>");
 	}
 	rs.close();
 	st.close();
 	conn.close();
+	response.sendRedirect("addGood.html");
 }
 catch(Exception e){
 	e.getStackTrace();
